@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครโครงการแนะแนวฟรี !! TCAS ทางเลือก ทางรอด ทางรุก – วางแผนสอบติด พิชิต มข.</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #e0ffe0; /* Light green background */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            max-width: 800px; /* Increased max-width */
+            width: 100%;
+            margin-top: 2rem; /* Add some top margin */
+        }
+        h1 {
+            color: #28a745; /* Darker green for heading */
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.25rem; /* Larger font size for heading */
+            font-weight: 700;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #c8e6c9; /* Light green border */
+            border-radius: 0.75rem; /* Rounded input fields */
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+            background-color: #f7fff7; /* Very light green background for inputs */
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #4CAF50; /* Green on focus */
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+        .checkbox-item input[type="checkbox"] {
+            margin-right: 0.5rem;
+            accent-color: #4CAF50; /* Green checkbox */
+            width: 1.25rem;
+            height: 1.25rem;
+            border-radius: 0.25rem;
+        }
+        .privacy-policy {
+            display: flex;
+            align-items: flex-start; /* Align checkbox and text at the top */
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        .privacy-policy input[type="checkbox"] {
+            flex-shrink: 0; /* Prevent checkbox from shrinking */
+            margin-top: 0.2rem; /* Adjust alignment */
+        }
+        .privacy-policy label {
+            margin-left: 0.5rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #555;
+        }
+        .privacy-policy a {
+            color: #2196F3; /* Blue link */
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: linear-gradient(to right, #4CAF50, #8BC34A); /* Green gradient */
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        button[type="submit"]:hover {
+            background: linear-gradient(to right, #8BC34A, #4CAF50); /* Reverse gradient on hover */
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
+            transform: translateY(-2px);
+        }
+        .icon {
+            color: #4CAF50; /* Green icons */
+            margin-right: 0.5rem;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px); /* Blurred background */
+        }
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            animation: slideIn 0.3s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes slideIn {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h2 {
+            color: #28a745;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-content p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        .modal-content a {
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        .modal-content a:hover {
+            color: #0d47a1;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin-top: 1rem;
+                border-radius: 1rem;
+            }
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+            }
+            .form-group {
+                margin-bottom: 1rem;
+            }
+            label {
+                font-size: 0.9rem;
+            }
+            input[type="text"],
+            input[type="email"],
+            input[type="tel"],
+            select,
+            textarea {
+                padding: 0.7rem 0.9rem;
+                font-size: 0.9rem;
+                border-radius: 0.6rem;
+            }
+            button[type="submit"] {
+                padding: 0.8rem 1rem;
+                font-size: 1.1rem;
+            }
+            .modal-content {
+                padding: 2rem;
+                border-radius: 1rem;
+            }
+            .modal-content h2 {
+                font-size: 1.75rem;
+            }
+            .modal-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .modal-content {
+                padding: 1.5rem;
+            }
+            .modal-content h2 {
+                font-size: 1.5rem;
+            }
+            .modal-content p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-graduation-cap icon"></i> สมัครโครงการแนะแนวฟรี !! TCAS ทางเลือก ทางรอด ทางรุก – วางแผนสอบติด พิชิต มข.</h1>
+
+        <form id="tcasForm" action="https://script.google.com/macros/s/AKfycbwal8ptIAO8hDv7kED3NoLNL6aVm-qMUoFapBPkiK70hymV-sTMlrZ1hq82nSq2gZkS/exec" method="POST">
+            <!-- Acceptance Checkbox -->
+            <div class="form-group privacy-policy">
+                <input type="checkbox" id="acceptPolicy" name="acceptPolicy" required class="rounded-md">
+                <label for="acceptPolicy">
+                    ข้าพเจ้าได้ทำความเข้าใจรายละเอียดค่าย และมีความประสงค์จะกรอกข้อมูลเพื่อสมัครติวครั้งนี้
+                    และได้อ่าน <a href="https://www.theactkk.net/นโยบายความเป็นส่วนตัว" target="_blank">นโยบายความเป็นส่วนตัว</a> แล้ว
+                </label>
+            </div>
+
+            <!-- Salutation -->
+            <div class="form-group">
+                <label for="salutation"><i class="fas fa-user-circle icon"></i> คำนำหน้า <span class="text-red-500">*</span></label>
+                <select id="salutation" name="คำนำหน้า" required class="rounded-md">
+                    <option value="">เลือกคำนำหน้า</option>
+                    <option value="เด็กชาย">เด็กชาย</option>
+                    <option value="เด็กหญิง">เด็กหญิง</option>
+                    <option value="นาย">นาย</option>
+                    <option value="นางสาว">นางสาว</option>
+                </select>
+            </div>
+
+            <!-- Full Name -->
+            <div class="form-group">
+                <label for="fullName"><i class="fas fa-signature icon"></i> ชื่อ - นามสกุล <span class="text-red-500">*</span></label>
+                <input type="text" id="fullName" name="ชื่อ - นามสกุล" placeholder="กรอกชื่อ - นามสกุล" required class="rounded-md">
+            </div>
+
+            <!-- Nickname -->
+            <div class="form-group">
+                <label for="nickName"><i class="fas fa-smile icon"></i> ชื่อเล่น <span class="text-red-500">*</span></label>
+                <input type="text" id="nickName" name="ชื่อเล่น" placeholder="กรอกชื่อเล่น" required class="rounded-md">
+            </div>
+
+            <!-- Grade Level -->
+            <div class="form-group">
+                <label for="gradeLevel"><i class="fas fa-book-reader icon"></i> ระดับชั้น <span class="text-red-500">*</span></label>
+                <select id="gradeLevel" name="ระดับชั้น" required class="rounded-md">
+                    <option value="">เลือกระดับชั้น</option>
+                    <option value="ม.1">ม.1</option>
+                    <option value="ม.2">ม.2</option>
+                    <option value="ม.3">ม.3</option>
+                    <option value="ม.4">ม.4</option>
+                    <option value="ม.5">ม.5</option>
+                    <option value="ม.6">ม.6</option>
+                </select>
+            </div>
+
+            <!-- School Name -->
+            <div class="form-group">
+                <label for="schoolName"><i class="fas fa-school icon"></i> โรงเรียน <span class="text-red-500">*</span></label>
+                <input type="text" id="schoolName" name="โรงเรียน" placeholder="กรอกชื่อโรงเรียน" required class="rounded-md">
+            </div>
+
+            <!-- School Province -->
+            <div class="form-group">
+                <label for="schoolProvince"><i class="fas fa-map-marker-alt icon"></i> จังหวัดที่ตั้งโรงเรียน <span class="text-red-500">*</span></label>
+                <input type="text" id="schoolProvince" name="จังหวัดที่ตั้งโรงเรียน" placeholder="กรอกจังหวัดที่ตั้งโรงเรียน" required class="rounded-md">
+            </div>
+
+            <!-- Applicant Phone Number -->
+            <div class="form-group">
+                <label for="applicantTel"><i class="fas fa-phone icon"></i> เบอร์ติดต่อผู้สมัคร <span class="text-red-500">*</span></label>
+                <input type="tel" id="applicantTel" name="เบอร์ติดต่อผู้สมัคร" placeholder="เช่น 0812345678" pattern="[0-9]{10}" title="กรุณากรอกเบอร์โทรศัพท์ 10 หลัก" required class="rounded-md">
+            </div>
+
+            <!-- Parent Phone Number -->
+            <div class="form-group">
+                <label for="parentTel"><i class="fas fa-user-shield icon"></i> เบอร์ติดต่อผู้ปกครอง <span class="text-red-500">*</span></label>
+                <input type="tel" id="parentTel" name="เบอร์ติดต่อผู้ปกครอง" placeholder="เช่น 0812345678" pattern="[0-9]{10}" title="กรุณากรอกเบอร์โทรศัพท์ 10 หลัก" required class="rounded-md">
+            </div>
+
+            <!-- Applicant Email (Gmail only) -->
+            <div class="form-group">
+                <label for="applicantEmail"><i class="fas fa-envelope icon"></i> อีเมลผู้สมัครเพื่อรับไฟล์เอกสาร (ต้องเป็น Gmail เท่านั้น) <span class="text-red-500">*</span></label>
+                <input type="email" id="applicantEmail" name="อีเมลผู้สมัคร" placeholder="เช่น yourname@gmail.com" pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" title="กรุณากรอกอีเมล Gmail ที่ถูกต้อง" required class="rounded-md">
+            </div>
+
+            <!-- LINE ID -->
+            <div class="form-group">
+                <label for="lineId"><i class="fab fa-line icon"></i> LINE ID ผู้สมัคร</label>
+                <input type="text" id="lineId" name="LINE ID ผู้สมัคร" placeholder="กรอก LINE ID (ถ้ามี)" class="rounded-md">
+            </div>
+
+            <!-- Desired Faculty/Major -->
+            <div class="form-group">
+                <label for="desiredFaculty"><i class="fas fa-university icon"></i> คณะ/สาขาที่อยากเข้าเรียน <span class="text-red-500">*</span></label>
+                <select id="desiredFaculty" name="คณะ/สาขาที่อยากเข้าเรียน" required class="rounded-md">
+                    <option value="">เลือกคณะ/สาขา</option>
+                    <option value="คณะแพทยศาสตร์">คณะแพทยศาสตร์</option>
+                    <option value="คณะทันตแพทยศาสตร์">คณะทันตแพทยศาสตร์</option>
+                    <option value="คณะเภสัชศาสตร์">คณะเภสัชศาสตร์</option>
+                    <option value="คณะสัตวแพทยศาสตร์">คณะสัตวแพทยศาสตร์</option>
+                    <option value="คณะเทคนิคการแพทย์">คณะเทคนิคการแพทย์</option>
+                    <option value="คณะพยาบาลศาสตร์">คณะพยาบาลศาสตร์</option>
+                    <option value="คณะสาธารณสุขศาสตร์">คณะสาธารณสุขศาสตร์</option>
+                    <option value="คณะวิทยาศาสตร์">คณะวิทยาศาสตร์</option>
+                    <option value="คณะวิศวกรรมศาสตร์">คณะวิศวกรรมศาสตร์</option>
+                    <option value="คณะเกษตรศาสตร์">คณะเกษตรศาสตร์</option>
+                    <option value="คณะเทคโนโลยี">คณะเทคโนโลยี</option>
+                    <option value="คณะสถาปัตยกรรมศาสตร์">คณะสถาปัตยกรรมศาสตร์</option>
+                    <option value="คณะศึกษาศาสตร์">คณะศึกษาศาสตร์</option>
+                    <option value="คณะมนุษยศาสตร์และสังคมศาสตร์">คณะมนุษยศาสตร์และสังคมศาสตร์</option>
+                    <option value="คณะนิติศาสตร์">คณะนิติศาสตร์</option>
+                    <option value="คณะบริหารธุรกิจและการบัญชี">คณะบริหารธุรกิจและการบัญชี</option>
+                    <option value="คณะเศรษฐศาสตร์">คณะเศรษฐศาสตร์</option>
+                    <option value="คณะศิลปกรรมศาสตร์">คณะศิลปกรรมศาสตร์</option>
+                    <option value="คณะวิทยาการสารสนเทศ">คณะวิทยาการสารสนเทศ</option>
+                    <option value="คณะวิทยาการจัดการ">คณะวิทยาการจัดการ</option>
+                    <option value="วิทยาลัยการปกครองท้องถิ่น">วิทยาลัยการปกครองท้องถิ่น</option>
+                    <option value="วิทยาลัยนานาชาติ">วิทยาลัยนานาชาติ</option>
+                    <option value="วิทยาลัยการคอมพิวเตอร์">วิทยาลัยการคอมพิวเตอร์</option>
+                    <option value="คณะสหวิทยาการ (วิทยาเขตหนองคาย)">คณะสหวิทยาการ (วิทยาเขตหนองคาย)</option>
+                </select>
+            </div>
+
+            <!-- Preferred Contact Time -->
+            <div class="form-group">
+                <label for="contactTime"><i class="fas fa-clock icon"></i> ช่วงเวลาที่สะดวกให้ติดต่อกลับ <span class="text-red-500">*</span></label>
+                <select id="contactTime" name="ช่วงเวลาที่สะดวกให้ติดต่อกลับ" required class="rounded-md">
+                    <option value="">เลือกช่วงเวลา</option>
+                    <option value="09.00 น.">09.00 น.</option>
+                    <option value="10.00 น.">10.00 น.</option>
+                    <option value="11.00 น.">11.00 น.</option>
+                    <option value="12.00 น.">12.00 น.</option>
+                    <option value="13.00 น.">13.00 น.</option>
+                    <option value="14.00 น.">14.00 น.</option>
+                    <option value="15.00 น.">15.00 น.</option>
+                    <option value="16.00 น.">16.00 น.</option>
+                    <option value="17.00 น.">17.00 น.</option>
+                    <option value="18.00 น.">18.00 น.</option>
+                    <option value="19.00 น.">19.00 น.</option>
+                </select>
+            </div>
+
+            <!-- Expectations -->
+            <div class="form-group">
+                <label for="expectations"><i class="fas fa-lightbulb icon"></i> ความคาดหวังในการร่วมโครงการกับ The Act ในครั้งนี้</label>
+                <textarea id="expectations" name="ความคาดหวัง" placeholder="กรอกความคาดหวังของคุณ" rows="4" class="rounded-md"></textarea>
+            </div>
+
+            <!-- How did you know The Act -->
+            <div class="form-group">
+                <label><i class="fas fa-bullhorn icon"></i> คุณรู้จักกิจกรรมของ The Act ผ่านช่องทางใดบ้าง? (เลือกได้หลายข้อ) <span class="text-red-500">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelFacebook" name="ช่องทางที่รู้จัก" value="Facebook" class="rounded-md">
+                        <label for="channelFacebook">Facebook</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelTikTok" name="ช่องทางที่รู้จัก" value="TikTok" class="rounded-md">
+                        <label for="channelTikTok">TikTok</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelLineOA" name="ช่องทางที่รู้จัก" value="Line OA" class="rounded-md">
+                        <label for="channelLineOA">Line OA</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelFriend" name="ช่องทางที่รู้จัก" value="เพื่อนแนะนำ" class="rounded-md">
+                        <label for="channelFriend">เพื่อนแนะนำ</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelTeacher" name="ช่องทางที่รู้จัก" value="ครูแนะนำ" class="rounded-md">
+                        <label for="channelTeacher">ครูแนะนำ</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelOnlineAd" name="ช่องทางที่รู้จัก" value="โฆษณาออนไลน์" class="rounded-md">
+                        <label for="channelOnlineAd">โฆษณาออนไลน์</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelWebsite" name="ช่องทางที่รู้จัก" value="เว็บไซต์ The Act" class="rounded-md">
+                        <label for="channelWebsite">เว็บไซต์ The Act</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelInstagram" name="ช่องทางที่รู้จัก" value="Instagram" class="rounded-md">
+                        <label for="channelInstagram">Instagram</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelTwitter" name="ช่องทางที่รู้จัก" value="Twitter" class="rounded-md">
+                        <label for="channelTwitter">Twitter</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelYoutube" name="ช่องทางที่รู้จัก" value="Youtube" class="rounded-md">
+                        <label for="channelYoutube">Youtube</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelParent" name="ช่องทางที่รู้จัก" value="ผู้ปกครองแนะนำ" class="rounded-md">
+                        <label for="channelParent">ผู้ปกครองแนะนำ</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelSenior" name="ช่องทางที่รู้จัก" value="รุ่นพี่แนะนำ" class="rounded-md">
+                        <label for="channelSenior">รุ่นพี่แนะนำ</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="channelOther" name="ช่องทางที่รู้จัก" value="อื่น ๆ" class="rounded-md">
+                        <label for="channelOther">อื่น ๆ (กรุณาระบุ)</label>
+                        <input type="text" id="otherChannelText" name="ช่องทางที่รู้จัก_อื่น ๆ" placeholder="ระบุ" class="ml-2 w-32 rounded-md hidden">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">ส่งใบสมัคร <i class="fas fa-paper-plane ml-2"></i></button>
+        </form>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2><i class="fas fa-check-circle icon"></i> สมัครเรียบร้อยแล้ว!</h2>
+            <p>คุณได้สมัครยืนยันรับสิทธิ์ติวฟรี เรียบร้อยแล้ว</p>
+            <p>อย่าลืม! กดเข้ากลุ่มไลน์โอเพนแชทห้องแนะแนว TCAS</p>
+            <p><a href="https://line.me/ti/g2/yptnwbFi8KHuQUfuD1lfr-vkCfKbMidNb0DBDQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank">คลิกที่นี่</a> เพื่อเข้าร่วมกลุ่มไลน์</p>
+        </div>
+    </div>
+
+    <script>
+        // Get the form and modal elements
+        const tcasForm = document.getElementById('tcasForm');
+        const successModal = document.getElementById('successModal');
+        const otherChannelCheckbox = document.getElementById('channelOther');
+        const otherChannelTextInput = document.getElementById('otherChannelText');
+
+        // Toggle visibility of "Other" text input
+        otherChannelCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                otherChannelTextInput.classList.remove('hidden');
+                otherChannelTextInput.setAttribute('required', 'required'); // Make it required if checked
+            } else {
+                otherChannelTextInput.classList.add('hidden');
+                otherChannelTextInput.removeAttribute('required');
+                otherChannelTextInput.value = ''; // Clear value if unchecked
+            }
+        });
+
+        // Function to show the modal
+        function showModal() {
+            successModal.style.display = 'flex';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            successModal.style.display = 'none';
+        }
+
+        // Handle form submission
+        tcasForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Basic validation for "How did you know" checkboxes
+            const channelCheckboxes = document.querySelectorAll('input[name="ช่องทางที่รู้จัก"]:checked');
+            if (channelCheckboxes.length === 0) {
+                alert('กรุณาเลือกช่องทางที่คุณรู้จักกิจกรรมของ The Act อย่างน้อย 1 ช่องทาง');
+                return;
+            }
+
+            // Collect form data
+            const formData = new FormData(tcasForm);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                if (key === "ช่องทางที่รู้จัก") {
+                    if (!data[key]) {
+                        data[key] = [];
+                    }
+                    data[key].push(value);
+                } else if (key === "ช่องทางที่รู้จัก_อื่น ๆ") {
+                    // If "Other" is checked and text is entered, append it to "ช่องทางที่รู้จัก"
+                    if (otherChannelCheckbox.checked && otherChannelTextInput.value.trim() !== '') {
+                        if (!data["ช่องทางที่รู้จัก"]) {
+                            data["ช่องทางที่รู้จัก"] = [];
+                        }
+                        data["ช่องทางที่รู้จัก"].push("อื่น ๆ: " + otherChannelTextInput.value.trim());
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Convert array values to comma-separated string for Google Sheet
+            if (data["ช่องทางที่รู้จัก"]) {
+                data["ช่องทางที่รู้จัก"] = data["ช่องทางที่รู้จัก"].join(', ');
+            } else {
+                data["ช่องทางที่รู้จัก"] = ""; // Ensure it's not undefined if no checkbox selected
+            }
+
+            // Remove the 'acceptPolicy' and 'ช่องทางที่รู้จัก_อื่น ๆ' from the data sent to Google Sheet if not needed in the sheet.
+            delete data.acceptPolicy;
+            delete data["ช่องทางที่รู้จัก_อื่น ๆ"];
+
+
+            // Simulate sending data to Google Sheet (replace with actual fetch to your Apps Script URL)
+            // IMPORTANT: Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL' with your actual deployed Apps Script URL
+            const googleAppsScriptURL = tcasForm.action;
+
+            fetch(googleAppsScriptURL, {
+                method: 'POST',
+                mode: 'no-cors', // Important for cross-origin submission to Apps Script
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data).toString(),
+            })
+            .then(() => {
+                showModal(); // Show success modal on successful submission
+                tcasForm.reset(); // Clear the form
+                otherChannelTextInput.classList.add('hidden'); // Hide "Other" text input
+                otherChannelTextInput.removeAttribute('required');
+                otherChannelTextInput.value = '';
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+                // In a real application, you might show an error message to the user
+                alert('เกิดข้อผิดพลาดในการส่งใบสมัคร กรุณาลองอีกครั้ง');
+            });
+        });
+    </script>
+</body>
+</html>
